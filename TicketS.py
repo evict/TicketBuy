@@ -69,6 +69,17 @@ def main():
 		'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:29.0) Gecko/20100101 Firefox/29.0'	
 	}
 
+	banner = """
+	          __      _.._
+	       .-'__`-._.'.--.'.__.,
+	      /--'  '-._.'    '-._./
+	     /__.--._.--._.'``-.__/
+	     '._.-'-._.-._.-''-..'
+    				TicketBuyer 
+     					evict"""
+
+	print banner
+	
         if url == None:
                 parser.error("Please specify a URL!")
 
