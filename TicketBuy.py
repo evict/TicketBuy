@@ -75,7 +75,7 @@ def main():
 	      /--'  '-._.'    '-._./
 	     /__.--._.--._.'``-.__/
 	     '._.-'-._.-._.-''-..'
-    				TicketBuyer 
+    				TicketBuy 
      					evict"""
 
 	print banner
