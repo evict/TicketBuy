@@ -101,6 +101,7 @@ def main():
 			for ticket in tickets:
 				if reserve == True:
 					subprocess.Popen(['open', ticket])
+					subprocess.Popen(['say', 'ticket found!'])
 					loop = False
 					print ("\nTrying to reserve %s\n" % ticket)
 					break
