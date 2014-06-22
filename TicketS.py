@@ -48,7 +48,6 @@ def main():
 	optional = optparse.OptionGroup(parser, "Optional")	
 
         mandatory.add_option("-u", "--url", type="string", help="target url", dest="url")
-	
 	optional.add_option("-r", "--reserve", action="store_true", help="reserve ticket", dest="reserve")
 
         parser.add_option_group(mandatory)
@@ -89,8 +88,6 @@ def main():
 				else:
 					print ticket
 				
-			sold = get_sold(soup)
-		
 			sys.stdout.write("\r%i tickets available!" % counter)
 			sys.stdout.flush()		
 
