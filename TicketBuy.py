@@ -37,18 +37,17 @@ def get_available(data, counter, sold, url):
 	links = re.findall('/tickets/(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', data.text)
 	tickets = []
 	for x in links:
-
 		if x not in tickets:
 			tickets.append(x)
 
 	atickets = tickets[:-sold]
-	tickets = []
+	ticketlinks = []
 
 	for ticket in atickets:
 		ticketlink = "https://www.ticketswap.nl"+ticket+"/reserveren/aanmelden/1"
-		tickets.append(ticketlink)
+		ticketlinks.append(ticketlink)
 	
-	return tickets
+	return ticketlinks
 
 def main():
 	parser = optparse.OptionParser(usage="%prog [options]", version="%prog 0.1")
