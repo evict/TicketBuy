@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #The MIT License (MIT)
 #
 #Copyright (c) 2014 Vincent Ruijter
@@ -20,7 +21,7 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #SOFTWARE.
 #
-#!/usr/bin/env python
+
 import re
 import sys
 import optparse
