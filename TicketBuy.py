@@ -40,7 +40,7 @@ def get_counter(soup):
 		a =  re.findall("<div class=\"counter-value\">(.*?)</div>", i)
 		c = map(int, a)
 
-	counter =  int(c[0])
+		counter =  int(c[0])
 
 	if not counter:
 		counter = 0
