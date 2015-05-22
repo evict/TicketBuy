@@ -32,6 +32,7 @@ from bs4 import BeautifulSoup
 def get_counter(soup):
 	available = soup.findAll('div', attrs={'class': 'counter counter-available'})
 	content = []
+	counter = 0
 
 	for i in available:
 		content.append(str(i))
