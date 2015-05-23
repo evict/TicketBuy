@@ -27,7 +27,7 @@ import sys
 import optparse
 import requests
 import subprocess
-from bs4 import BeautifulSoup
+import BeautifulSoup
 
 def get_counter(soup):
 	available = soup.findAll('div', attrs={'class': 'counter counter-available'})
@@ -49,13 +49,10 @@ def get_counter(soup):
 	return counter	
 
 def get_sold(soup):
-	sold = soup.findAll('span', attrs={'class': 'type sold'})	
-	x=0
+	sold = soup.findAll('div', attrs={'class':'counter-value'})
+	x = re.findall('.*>(.*)<.*', str(sold[1]))[0]
 
-	for i in sold:
-		x=x+1
-
-	return x
+	return int(x)
 	
 def get_available(data, counter, sold, url):
 	links = re.findall('/tickets/(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', data.text)
@@ -63,14 +60,13 @@ def get_available(data, counter, sold, url):
 	for x in links:
 		if x not in tickets:
 			tickets.append(x)
-
 	atickets = tickets[:-sold]
-	ticketlinks = []
 
+	ticketlinks = []
 	for ticket in atickets:
 		ticketlink = "https://www.ticketswap.nl"+ticket+"/reserveren/aanmelden/1"
 		ticketlinks.append(ticketlink)
-	
+
 	return ticketlinks
 
 def main():
@@ -112,15 +108,12 @@ def main():
 		while loop == True:
 			data = requests.get((url), headers=headers)
 
-			soup = BeautifulSoup(data.text)
+			soup = BeautifulSoup.BeautifulSoup(data.text)
 			counter = get_counter(soup)
-
-			if counter >= 1:
-				loop = False
 
 			sold = get_sold(soup)
 			tickets = get_available(data, counter, sold, url)
-
+		
 			for ticket in tickets:
 				if reserve == True:
 					subprocess.Popen(['open', ticket])
